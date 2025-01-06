@@ -1,18 +1,48 @@
-#Project A
+#Project A-Step 1: Create Donor OU and 5 AD users in Donor OU with email addresses
 
 # Create the Donor OU
-New-ADOrganizationalUnit -Name "Donor" -Path "DC=yourdomain,DC=com"
+New-ADOrganizationalUnit -Name "Donor" -Path "DC=Adatum,DC=com"
 
 # Define the base DN for the new users
-$ouPath = "OU=Donor,DC=yourdomain,DC=com"
+$DonorOU = "OU=Donor,DC=Adatum,DC=com"
 
-# Create 5 Donor users
+# Create 5 Donor users and add email addresses
 for ($i = 1; $i -le 5; $i++) {
     $username = "DonorUser$i"
-    $password = "P@ssw0rd$i"  # Ensure you follow your organization's password policy
-    New-ADUser -Name $username -SamAccountName $username -UserPrincipalName "$username@yourdomain.com" `
-               -Path $ouPath -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) `
+    $password = "Pa55w.rd"  # Ensure you follow your organization's password policy
+    $email = "$username@Adatum.com"
+    
+    # Create the user
+    New-ADUser -Name $username -SamAccountName $username -UserPrincipalName $email `
+               -Path $DonorOU -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) `
                -Enabled $true
+    
+    # Set the email address
+    Set-ADUser -Identity $username -EmailAddress $email
 }
 
-Write-Host "Donor OU and 5 Donor users created successfully."
+Write-Host "Donor OU and 5 Donor users with email addresses created successfully."
+
+#Project A-Step 2: Create the CSV file with donor name, donor email, donation amount and donation date
+
+# Define the OU path where the donor users are located
+$DonorOU = "OU=Donor,DC=Adatum,DC=com"
+
+# Get the 5 donor users from the specified OU
+$donorUsers = Get-ADUser -Filter * -SearchBase $DonorOU -Property EmailAddress | Select-Object *
+
+# Define the donation details (Create an array table with Donor info)
+$donationDetails = @(
+    [PSCustomObject]@{Username = "DonorUser1"; Email = "DonorUser1@Adatum.com"; DonationAmount = 100; DonationDate = "2025-01-01"}
+    [PSCustomObject]@{Username = "DonorUser2"; Email = "DonorUser2@Adatum.com"; DonationAmount = 150; DonationDate = "2025-01-02"}
+    [PSCustomObject]@{Username = "DonorUser3"; Email = "DonorUser3@Adatum.com"; DonationAmount = 200; DonationDate = "2025-01-03"}
+    [PSCustomObject]@{Username = "DonorUser4"; Email = "DonorUser4@Adatum.com"; DonationAmount = 250; DonationDate = "2025-01-04"}
+    [PSCustomObject]@{Username = "DonorUser5"; Email = "DonorUser5@Adatum.com"; DonationAmount = 300; DonationDate = "2025-01-05"}
+)
+
+# Create a new CSV file and export the donation details
+$csvFilePath = "C:\donor_donations.csv"
+$donationDetails | Export-Csv -Path $csvFilePath -NoTypeInformation
+
+Write-Host "Donation details have been exported to $csvFilePath successfully."
+
