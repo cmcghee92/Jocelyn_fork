@@ -1,7 +1,8 @@
 General Ideas for Project using Non-Profit as inspiration
 
-A. Given a CSV file containing donor names/emails (use fake info), create a powershell script to autogenerate a thank you email
-B. Given a csv file containint donation data for a period of time, create a powershell script that will analyze the data trends by visually displaying charts and graph
+A. In a new AZ-400 Lab Create a Donor OU and create 5 AD Users in the Donor OU
+B. Given a CSV file containing donor names/emails (use fake info), create a powershell script to autogenerate a thank you email
+C.Given a csv file containint donation data for a period of time, create a powershell script that will analyze the data trends by visually displaying charts and graph
 
 Steps:
 Download/install Powershell 7
