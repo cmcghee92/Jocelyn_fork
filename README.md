@@ -1,4 +1,4 @@
-# Non-Profit Donation Tracker
+# Project Compassion Powershell Project
 
 ## Overview
 This project is a PowerShell script designed to help non-profit organizations track donations and generate thank-you letters or emails to donors
