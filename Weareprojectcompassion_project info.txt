@@ -1,7 +1,6 @@
 General Ideas for Project using Non-Profit as inspiration
 
-A. In a new AZ-400 Lab Create a Donor OU and create 5 AD Users in the Donor OU
-B. Given a CSV file containing donor names/emails (use fake info), create a powershell script to autogenerate a thank you email
+A. In a new AZ-400 Lab Create a Donor OU and create 5 AD Users in the Donor OU. Use Powershell to create  a CSV file containing donor names/emails (use fake info), create a powershell script to autogenerate a thank you email
 C.Given a csv file containint donation data for a period of time, create a powershell script that will analyze the data trends by visually displaying charts and graph
 
 Steps:
@@ -19,8 +18,11 @@ Pull Donor information from paypal or donation platform.  For practice and knowl
 -Using the file as a template (header information).  Create a csv, file using the same header format and insert your list of donors.
 1. Write a script to create an OU called Donors under Adatum.com and add 5 AD users with emails.  
 2. Write a script to pull those 5 AD Donors and add a donation amount, donation date then output that data into a csv file in the C drive.
-3. Create a powershell script that will autogenerate a thank you email, to each donor by name, their donation amount and the donation date.  if unable to auto send the email create an email file instead.
+3. Create a powershell script that will autogenerate a thank you letter, to each donor by name, their donation amount and the donation date.
+****NOte I may add fake addresses to the fake users to then add onto the thank you letters......
 
-Project B.  Given a CSV file containing donation amounts from the start of using the donation platform.  Use real data from our Non-profit.
+Project B.  Given a CSV file containing donation amounts from the start of using the donation platform.  Use real data from our Non-profit.  Awaiting access to the non-profit paypay account so I can export the transaction data.... 
+
+
 1. Export transaction log from paypal for our non-profit (Project Compassion) since we started using it into a csv file
 2.  Create a powershell script that will take the csv file and analyze the data by generating different charts and graph for different time frames, by year, etc.
