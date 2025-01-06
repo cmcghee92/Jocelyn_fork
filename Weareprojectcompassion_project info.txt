@@ -17,9 +17,10 @@ Create/update README.md
 Project A. Given a CSV file containing donor names/emails (use fake info), create a powershell script to autogenerate a thank you email
 Pull Donor information from paypal or donation platform.  For practice and knowledge only.  Do NOT use or post real Donor information on this project!  I will be inserting fake donor names and emails (from the AZ-0400 Lab I will use Users in the Contoso.com domain)
 -Using the file as a template (header information).  Create a csv, file using the same header format and insert your list of donors.
--Write a script to pull AD users from AZ-0400 Lab, pull 10 sample users
-Create a powershell script that will autogenerate a thank you email to each donor by name, their donation amount and the donation date.  
-If able to add a script to also auto email it out.
+1. Write a script to create an OU called Donors under Adatum.com and add 5 AD users with emails.  
+2. Write a script to pull those 5 AD Donors and add a donation amount, donation date then output that data into a csv file in the C drive.
+3. Create a powershell script that will autogenerate a thank you email, to each donor by name, their donation amount and the donation date.  if unable to auto send the email create an email file instead.
 
-
-Project B.  Given a CSV file containing donation amounts from the start of using the donation platform.
+Project B.  Given a CSV file containing donation amounts from the start of using the donation platform.  Use real data from our Non-profit.
+1. Export transaction log from paypal for our non-profit (Project Compassion) since we started using it into a csv file
+2.  Create a powershell script that will take the csv file and analyze the data by generating different charts and graph for different time frames, by year, etc.
