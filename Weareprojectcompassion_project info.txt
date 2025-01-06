@@ -1,148 +1,24 @@
-Powershell project
+General Ideas for Project using Non-Profit as inspiration
+
+A. Given a CSV file containing donor names/emails (use fake info), create a powershell script to autogenerate a thank you email
+B. Given a csv file containint donation data for a period of time, create a powershell script that will analyze the data trends by visually displaying charts and graph
+
+Steps:
+Download/install Powershell 7
+Download/install Visual Studio Code
+Download/install Git and configure with global username and email
+Install VSC extensions: Powershell and GitHub Pull Request
+
+GitHub:
+Create a new Project
+Create/update README.md
+
+Project A. Given a CSV file containing donor names/emails (use fake info), create a powershell script to autogenerate a thank you email
+Pull Donor information from paypal or donation platform.  For practice and knowledge only.  Do NOT use or post real Donor information on this project!  I will be inserting fake donor names and emails (from the AZ-0400 Lab I will use Users in the Contoso.com domain)
+-Using the file as a template (header information).  Create a csv, file using the same header format and insert your list of donors.
+-Write a script to pull AD users from AZ-0400 Lab, pull 10 sample users
+Create a powershell script that will autogenerate a thank you email to each donor by name, their donation amount and the donation date.  
+If able to add a script to also auto email it out.
 
 
-create a code/script and saving them to build a library of powershell  then storing them into GitHub
-
-Git 
-
-Override named main
-
-git from CLI
-open ssl
-checkout windows style
-keep defaults except override name to main
-
-
-Git
-
-git config --global user.name "username"
-git config --global user.email email
-
-Download powershell 7
-
-on VS code
-install powershell extention
-install GitHub pull requests
-
-
-=============================================
-
-provided with a paypal transaction activity csv what types of powershell project could I develop
-That sounds like a versatile resource for a PowerShell project! Here are a few ideas on how you can leverage PayPal transaction activity data:
-
-1. Financial Summary Report
-Description: Create a PowerShell script that reads the PayPal CSV and generates a comprehensive financial summary. Features:
-
-Summarize total income, expenses, and net profit.
-
-Breakdown of transactions by type (e.g., donations, purchases, refunds).
-
-Generate visual charts (bar charts, pie charts) for better insights.
-
-Schedule automatic generation and emailing of financial summaries.
-
-2. Expense Categorization
-Description: Develop a script that categorizes transactions into different expense types. Features:
-
-Read and parse the CSV file.
-
-Automatically categorize expenses using keywords or patterns.
-
-Generate a report showing the amount spent in each category.
-
-Export the categorized data to a new CSV or Excel file.
-
-3. Donation Analytics Dashboard
-Description: Build an analytics dashboard to visualize and analyze donation data. Features:
-
-Track total donations, average donation amount, and number of donors.
-
-Visualize donation trends over time (daily, monthly, yearly).
-
-Identify top donors and donation sources.
-
-Generate interactive graphs and charts.
-
-4. Fraud Detection System
-Description: Create a PowerShell script to detect potential fraudulent transactions. Features:
-
-Identify transactions based on predefined criteria (e.g., unusually high amounts, multiple transactions in short time).
-
-Flag suspicious transactions for further review.
-
-Generate a report of flagged transactions.
-
-Integrate with your email system to send alerts.
-
-5. Automatic Thank-You Email Sender
-Description: Automate the process of sending thank-you emails to donors. Features:
-
-Read and parse the CSV file.
-
-Extract donor information and email addresses.
-
-Generate personalized thank-you emails using a template.
-
-Send emails via SMTP.
-
-6. Monthly Donation Report Generator
-Description: Develop a script to generate monthly donation reports for your non-profit. Features:
-
-Read the transaction CSV and filter by date.
-
-Summarize donation amounts and donor information for the month.
-
-Generate a PDF or Excel report with the summarized data.
-
-Schedule automatic generation and emailing of reports.
-
-Example: Automatic Thank-You Email Sender
-Here's a sample script for the Automatic Thank-You Email Sender:
-
-powershell
-# Function to send a thank-you email
-function Send-ThankYouEmail {
-    param (
-        [string]$DonorEmail,
-        [string]$DonorName,
-        [float]$Amount,
-        [datetime]$DonationDate
-    )
-
-    $smtpServer = "smtp.gmail.com"
-    $smtpPort = 587
-    $smtpUser = "your.email@gmail.com"
-    $smtpPass = "yourpassword"
-
-    $message = @"
-Dear $DonorName,
-
-Thank you for your generous donation of \$$Amount on $DonationDate. Your support is greatly appreciated!
-
-Sincerely,
-[Your Non-Profit Organization]
-"@
-
-    Send-MailMessage -SmtpServer $smtpServer -Port $smtpPort -Credential (New-Object PSCredential($smtpUser, (ConvertTo-SecureString $smtpPass -AsPlainText -Force))) -From $smtpUser -To $DonorEmail -Subject "Thank You for Your Donation" -Body $message -UseSsl
-}
-
-# Function to process the CSV file
-function Process-DonationsCSV {
-    param (
-        [string]$CsvPath
-    )
-
-    $donations = Import-Csv -Path $CsvPath
-
-    foreach ($donation in $donations) {
-        Send-ThankYouEmail -DonorEmail $donation.Email -DonorName $donation.Name -Amount $donation.Amount -DonationDate $donation.Date
-    }
-}
-
-# Example usage
-$csvPath = "paypal_transactions.csv"
-Process-DonationsCSV -CsvPath $csvPath
-These are just starting points, and you can further customize them to fit your specific needs and goals. Let me know if you need more details on any of these projects or assistance with the implementation!
-
-
-
+Project B.  Given a CSV file containing donation amounts from the start of using the donation platform.
