@@ -1,0 +1,18 @@
+#Project A
+
+# Create the Donor OU
+New-ADOrganizationalUnit -Name "Donor" -Path "DC=yourdomain,DC=com"
+
+# Define the base DN for the new users
+$ouPath = "OU=Donor,DC=yourdomain,DC=com"
+
+# Create 5 Donor users
+for ($i = 1; $i -le 5; $i++) {
+    $username = "DonorUser$i"
+    $password = "P@ssw0rd$i"  # Ensure you follow your organization's password policy
+    New-ADUser -Name $username -SamAccountName $username -UserPrincipalName "$username@yourdomain.com" `
+               -Path $ouPath -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) `
+               -Enabled $true
+}
+
+Write-Host "Donor OU and 5 Donor users created successfully."
