@@ -1,28 +1,32 @@
 General Ideas for Project using Non-Profit as inspiration
+Pulled the paypal donation transaction log I removed and replace real donor data (name, phone number and emails) with 38 names of movie characters, and music artists from the 90s.  They were given fake addresses and donation amounts and donation dates.
 
-A. In a new AZ-400 Lab Create a Donor OU and create 5 AD Users in the Donor OU. Use Powershell to create  a CSV file containing donor names/emails (use fake info), create a powershell script to autogenerate a thank you email
-C.Given a csv file containint donation data for a period of time, create a powershell script that will analyze the data trends by visually displaying charts and graph
+Project A: 
+Step 1: Prepare the environment
+In a AZ-400 Lab Create a Donor OU and create AD Users in the Donor OU with name, email, and addresses. 
 
-Steps:
+Step 2: 
+Use Powershell to create a CSV file containing donor names and addresses (use fake info), create a powershell script to pull the Donor name and mailing address from AD DS (Donor OU)
+
+Step 3: Autogenerate custom letter promoting current donation campaign
+
+Create a script to autogenerate a custom letter that will be printed and mailed.  Letter includes personalized info with donor mailing address and name notifying the donor of the current campaign to collect funds for a children's hospital in Lima, Peru.  
+
+Project B: Analyze Paypal donation data
+Given a csv file containint donation data for a period of time, create a powershell script that will analyze the data trends by visually displaying charts and graph
+
+Requirements
 Download/install Powershell 7
 Download/install Visual Studio Code
 Download/install Git and configure with global username and email
 Install VSC extensions: Powershell and GitHub Pull Request
 
 GitHub:
-Create a new Project
-Create/update README.md
-
-Project A. Given a CSV file containing donor names/emails (use fake info), create a powershell script to autogenerate a thank you email
-Pull Donor information from paypal or donation platform.  For practice and knowledge only.  Do NOT use or post real Donor information on this project!  I will be inserting fake donor names and emails (from the AZ-0400 Lab I will use Users in the Contoso.com domain)
--Using the file as a template (header information).  Create a csv, file using the same header format and insert your list of donors.
-1. Write a script to create an OU called Donors under Adatum.com and add 5 AD users with emails.  
-2. Write a script to pull those 5 AD Donors and add a donation amount, donation date then output that data into a csv file in the C drive.
-3. Create a powershell script that will autogenerate a thank you letter, to each donor by name, their donation amount and the donation date.
-****NOte I may add fake addresses to the fake users to then add onto the thank you letters......
-
-Project B.  Given a CSV file containing donation amounts from the start of using the donation platform.  Use real data from our Non-profit.  Awaiting access to the non-profit paypay account so I can export the transaction data.... 
+New Project 
+README.md
+Source paypal data.csv (for Demonstration purpose only)
+Project Compassion Paypal Data.csv (required for the ProjectAscript.ps1)
+ProjectAscript.ps1 (script to complete Project A using powershell)
+ProjectBscript.ps1 (Script to complete Project B using powershell)
 
 
-1. Export transaction log from paypal for our non-profit (Project Compassion) since we started using it into a csv file
-2.  Create a powershell script that will take the csv file and analyze the data by generating different charts and graph for different time frames, by year, etc.
