@@ -13,7 +13,7 @@ Step 3: Autogenerate custom letter promoting current donation campaign
 
 Create a script to autogenerate a custom letter that will be printed and mailed.  Letter includes personalized info with donor mailing address and name notifying the donor of the current campaign to collect funds for a children's hospital in Lima, Peru.  
 
-Project B: Analyze Paypal donation data
+Project B: Analyze Paypal donation data (you can also use an excel extension but must download the Excel module from PS gallery)
 Given a csv file containint donation data for a period of time, create a powershell script that will analyze the data trends by visually displaying charts and graph
 
 Requirements
