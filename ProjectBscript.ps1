@@ -24,7 +24,7 @@ $groupedDonations = $donations | Group-Object {
 }
 
 # Define the path for the output image
-$outputImagePath = "C:\Path\To\Your\Donations_Line_Graph.png"
+$outputImagePath = "C:\Powershell Project\Donations_Line_Graph.png"
 
 # Generate the line graph
 Add-Type -AssemblyName System.Windows.Forms
