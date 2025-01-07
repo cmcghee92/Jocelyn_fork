@@ -1,11 +1,10 @@
 # Project Compassion Powershell Project
 
 ## Overview
-This project is a PowerShell script designed to help non-profit organizations track donations and generate thank-you letters or emails to donors
+This project is a PowerShell script designed to help non-profit organizations analyze donations and generate custom notification letters for current or upcoming donation campaigns that can be mailed to previous donors.
 
 ## Features
-- **Generate Thank-You Letters**: Automatically generate personalized thank-you letters for donors.  
-- **Send Thank-You Emails**: Send personalized thank-you emails to donors using SMTP.
+- **Autogenerate custom letters**: Automatically generate personalized thank-you letters for donors.  
 - **Integrate with Online Platforms**: Fetch and process donation data from online platforms using APIs.
 
 ## Prerequisites
@@ -21,7 +20,9 @@ This project is a PowerShell script designed to help non-profit organizations tr
     ```
 
 ## Usage
-1.  For non-profits that want to automatically send a personalized email to donors.
+1.  For non-profits that want to automatically send a personalized letter that can be mailed to donors.
 2.  Customize the script to send reminder emails to previous donors of an upcoming charity event.
 
-### Tracking Donations
+### Disclaimer
+1.  The PayPal Data.csv file contains movie characters or pop singer names (for fun) and fake addresses.  While I did download the Activity log from Paypal, I only used some of the headers.  None of this data actually came from PayPal to ensure no personal donor information is used.
+2.  This is a project to practice use of Powershell scripts and commands in Active Directory to demonstrate knowledge and understanding of powershell commands.
