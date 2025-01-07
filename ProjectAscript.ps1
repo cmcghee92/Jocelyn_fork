@@ -1,16 +1,24 @@
 #Download weareprojectcompassion.ps1 from GitHub onto C drive then run the script
 #Create a powershell script that creates a folder in C drive (in lab) named Powershell Project and downloads the files (paypal data and ps1 script) from GitHub into the folder
 #Open powershell ISE as administrator and input script if can't download and run the script in powershell
-#open ADUC use View, Advanced Properties, properties, Object and unselect protect object if you need to deleted OU
+#open ADUC use View, Advanced Properties, properties, Object and unselect protect object if you need to delete the Donor OU
 
 
-#Project A-Step 1: Create Donor OU and 5 AD users in Donor OU with email addresses, create the environment
+#Project A-Step 1: Create Donor OU and  AD users in Donor OU with email addresses, create the environment
 
 # Create the Donor OU
 New-ADOrganizationalUnit -Name "Donor" -Path "DC=Adatum,DC=com"
 
 # Define the base Domain Name for the new users
 $DonorOU = "OU=Donor,DC=Adatum,DC=com"
+
+# Project Folder Path
+$ProjectPowershellPath = "C:\Powershell Project"
+
+# Create the output folder if it doesn't exist
+if (-not (Test-Path -Path $ProjectPowershellPath)) {
+    New-Item -ItemType Directory -Path $ProjectPowershellPath
+}
 
 # Define the path to the CSV file
 $csvPath = "C:\Powershell Project\Project Compassion Paypal Data.csv"
@@ -124,7 +132,7 @@ Dear $fullName,
 We hope this letter finds you well. We are writing to express our heartfelt gratitude for your generous donation to Project Compassion in the past. 
 Your support has made a significant impact on the lives of those in need.
 
-We are excited to announce our current donation drive to raised $5,000 in support of the National Institute of Child Health (INSN) in Lima Peru, 
+We are excited to announce our current donation drive to raised $5000 in support of the National Institute of Child Health (INSN) in Lima Peru, 
 dedicated to treating needy children with traumatic injuries. Your past contributions have been invaluable, 
 and we hope that you will consider donating again to this worthy cause.
 
@@ -149,4 +157,6 @@ www.weareprojectcompassion.org
 }
 
 Write-Host "All letters have been created successfully."
+
+#If you want to rerun the script you must delete the Donor OU (in Active Directory) and delete the Thank you Letter Folder and the Donor Address List.csv file in the Powershell Project Folder
 
