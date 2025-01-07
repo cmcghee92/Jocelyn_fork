@@ -1,3 +1,6 @@
+Do Not use, use ProjectAscript.ps1 or ProjectBscript.ps1
+
+
 #Project A-Step 1: Create Donor OU and 5 AD users in Donor OU with email addresses
 
 # Create the Donor OU
