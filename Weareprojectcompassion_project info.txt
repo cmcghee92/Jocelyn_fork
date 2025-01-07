@@ -1,4 +1,5 @@
 General Ideas for Project using Non-Profit as inspiration
+https://weareprojectcompassion.org/
 Pulled the paypal donation transaction log I removed and replace real donor data (name, phone number and emails) with 38 names of movie characters, and music artists from the 90s.  They were given fake addresses and donation amounts and donation dates.
 
 Project A: 
