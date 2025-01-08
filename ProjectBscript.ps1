@@ -46,9 +46,14 @@ function Generate-LineGraph {
     $chart.Series.Add($series)
 
     # Add data points to the series
-    foreach ($data in $data) {
-        $monthName = [datetime]::ParseExact($data.MonthYear, "yyyy-MM", $null).ToString("MMMM")
-        $series.Points.AddXY($monthName, $data.TotalDonation)
+    $months = @("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+    foreach ($month in $months) {
+        $dataPoint = $data | Where-Object { $_.MonthYear -like "*$month*" }
+        if ($dataPoint) {
+            $series.Points.AddXY($month, $dataPoint.TotalDonation)
+        } else {
+            $series.Points.AddXY($month, 0)
+        }
     }
 
     # Set chart title and axis labels
