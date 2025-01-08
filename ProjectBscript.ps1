@@ -72,8 +72,24 @@ foreach ($year in $years) {
         }
     }
 
+    # Ensure each month from January to December is listed
+    $months = 1..12
+    $completeData = @()
+    foreach ($month in $months) {
+        $monthYear = "{0:D4}-{1:D2}" -f $year, $month
+        $donation = $groupedDonations | Where-Object { $_.MonthYear -eq $monthYear }
+        if ($donation) {
+            $completeData += $donation
+        } else {
+            $completeData += [PSCustomObject]@{
+                MonthYear = $monthYear
+                TotalDonation = 0
+            }
+        }
+    }
+
     $outputImagePath = "C:\Powershell Project\Donations_Line_Graph_$year.png"
-    Generate-LineGraph -data $groupedDonations -outputPath $outputImagePath -title "Donations Over Time - $year"
+    Generate-LineGraph -data $completeData -outputPath $outputImagePath -title "Donations for $year"
 }
 
 Write-Host "Line graphs have been created successfully for 2021, 2022, and 2023"
