@@ -5,9 +5,13 @@ $csvPath = "C:\Powershell Project\Project Compassion Paypal Data.csv"
 # Load the data from the CSV file
 $donations = Import-Csv -Path $csvPath
 
-# Parse the DonationDate column as DateTime
+# Parse the DonationDate column as DateTime with error handling
 $donations | ForEach-Object {
-    $_.DonationDate = [datetime]::ParseExact($_.DonationDate, "MM/dd/yyyy", $null)
+    try {
+        $_.DonationDate = [datetime]::ParseExact($_.DonationDate, "MM/dd/yyyy", $null)
+    } catch {
+        Write-Warning "Failed to parse date: $($_.DonationDate)"
+    }
 }
 
 # Sort the data by DonationDate
