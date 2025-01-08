@@ -47,12 +47,13 @@ function Generate-LineGraph {
 
     # Add data points to the series
     foreach ($data in $data) {
-        $series.Points.AddXY($data.MonthYear, $data.TotalDonation)
+        $monthName = [datetime]::ParseExact($data.MonthYear, "yyyy-MM", $null).ToString("MMMM")
+        $series.Points.AddXY($monthName, $data.TotalDonation)
     }
 
     # Set chart title and axis labels
     $chart.Titles.Add($title)
-    $chartArea.AxisX.Title = "Date"
+    $chartArea.AxisX.Title = "Month"
     $chartArea.AxisY.Title = "Donation Amount"
 
     # Save the chart as an image file
